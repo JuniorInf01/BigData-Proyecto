@@ -1,0 +1,40 @@
+# Datos originales descargados
+inputs/
+
+# Entornos virtuales y secretos
+bigdata_env/
+venv/
+.venv/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*credentials*.json
+*token*.json
+
+# Metastore Hive Derby
+metastore/
+metastore_db/
+derby.log
+
+# Archivos generados
+salidas_locales/
+evidencias/
+*.parquet
+*.crc
+*.zip
+
+# Python y Jupyter
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.pytest_cache/
+
+# Logs y temporales
+*.log
+tmp/
+logs/
+
+# Configuraciones locales
+.DS_Store
