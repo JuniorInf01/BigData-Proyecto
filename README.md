@@ -2,6 +2,17 @@
 
 Proyecto académico de análisis de datos del Sistema Privado de Pensiones del Perú.
 
+# Docente
+
+- Caballero Alvarado, Armando
+
+# Participantes
+
+- Infantes Rondo, Junior
+- Reyes Figueroa, Brandon
+- Salvador Mauricio, Angel
+- Terrones Llamo, Jan
+
 ## Arquitectura
 
 Ruta A (on-premise):
