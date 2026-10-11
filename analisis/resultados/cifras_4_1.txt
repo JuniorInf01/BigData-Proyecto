@@ -1,0 +1,85 @@
+== DATOS ==
+filas 140, ene-2015 a ago-2026
+objetivo: positivos 88, negativos 51, sin etiqueta 1
+entrenamiento (<= dic-2022): 96 meses, 63 positivos (65.6 %)
+prueba (> dic-2022): 43 meses, 25 positivos (58.1 %)
+
+== FIGURA 2: brecha mensual (Integra menos promedio simple de las otras tres) ==
+media -0.252, mediana -0.233, desv. est. 1.075
+meses por debajo de 0: 89 de 140 (63.6 %); en 0 o por encima: 51
+mínimo -2.607 (abr-2024); máximo 2.148 (dic-2021); último mes 0.624 (ago-2026)
+racha bajo cero: 25 meses (abr-2019 a abr-2021)
+racha bajo cero: 17 meses (jun-2023 a oct-2024)
+racha bajo cero: 16 meses (ene-2015 a abr-2016)
+racha bajo cero: 14 meses (ene-2018 a feb-2019)
+racha bajo cero: 8 meses (jul-2025 a feb-2026)
+meses consecutivos en 0 o por encima al cierre de la serie: 6
+           meses  bajo  media  pct_bajo
+fecha_mes                              
+2015          12    12  -0.72     100.0
+2016          12     6  -0.09      50.0
+2017          12     4   0.13      33.3
+2018          12    12  -0.40     100.0
+2019          12    11  -0.78      91.7
+2020          12    12  -1.62     100.0
+2021          12     4   0.29      33.3
+2022          12     3   0.74      25.0
+2023          12     7   0.27      58.3
+2024          12    10  -1.08      83.3
+2025          12     6  -0.01      50.0
+2026           8     2   0.51      25.0
+
+== FIGURA 3: Integra menos cada AFP ==
+Integra - Habitat: media -1.068, mediana -1.143, meses por debajo 115 de 140 (82.1 %)
+Integra - Prima: media 0.055, mediana 0.033, meses por debajo 68 de 140 (48.6 %)
+Integra - Profuturo: media 0.256, mediana 0.201, meses por debajo 64 de 140 (45.7 %)
+Habitat es la de mayor rentabilidad entre las cuatro en 95 de 140 meses (67.9 %)
+Integra es la última de las cuatro en 27 meses
+rentabilidad real media a 12 meses: Integra 3.73, Habitat 4.80, Prima 3.68, Profuturo 3.48
+de los 89 meses con brecha < 0, en 8 Integra supera a Prima y a Profuturo
+
+== FIGURA 4: persistencia de la brecha ==
+pares (t, t+1): 139; Pearson 0.897; Spearman 0.884
+signo en t -> t+1: sigue por debajo 80; sigue por encima 42; pasa a por encima 9; pasa a por debajo 8
+acuerdo de signo: 122 de 139 (87.8 %); cambios de signo: 17
+P(por debajo en t+1 | por debajo en t) = 0.899; P(por debajo en t+1 | no por debajo en t) = 0.160
+|brecha en t| mediana: 0.234 en meses con cambio de signo vs 0.853 sin cambio
+acuerdo de signo en entrenamiento: 83 de 96 (86.5 %)
+acuerdo de signo en prueba: 39 de 43 (90.7 %)
+AUC de la regla 'menor brecha hoy -> más riesgo mañana' (todos los meses con etiqueta): 0.922
+proporción de meses con etiqueta = 1: 63.3 % (referencia de mayoría)
+autocorrelación de la brecha, rezagos 1, 3, 6, 12: 0.897, 0.658, 0.235, -0.169
+
+== FIGURA 5: AUC univariado, solo entrenamiento (<= dic-2022) ==
+brecha_real_pp         n= 96 AUC=0.084 -> fuerza 0.916 (valor alto = menos riesgo; intervalo bootstrap 5-95 %: 0.861 a 0.964)
+brecha_lag1            n= 95 AUC=0.159 -> fuerza 0.841 (valor alto = menos riesgo; intervalo bootstrap 5-95 %: 0.755 a 0.913)
+tipo_cambio_lag1       n= 96 AUC=0.243 -> fuerza 0.757 (valor alto = menos riesgo; intervalo bootstrap 5-95 %: 0.668 a 0.848)
+brecha_lag3            n= 93 AUC=0.260 -> fuerza 0.740 (valor alto = menos riesgo; intervalo bootstrap 5-95 %: 0.653 a 0.830)
+ipc_lag1               n= 96 AUC=0.337 -> fuerza 0.663 (valor alto = menos riesgo; intervalo bootstrap 5-95 %: 0.554 a 0.760)
+sistema_lag1           n= 95 AUC=0.544 -> fuerza 0.544 (valor alto = más riesgo; intervalo bootstrap 5-95 %: 0.500 a 0.658)
+var_tc_12m_pct_lag1    n= 96 AUC=0.517 -> fuerza 0.517 (valor alto = más riesgo; intervalo bootstrap 5-95 %: 0.500 a 0.616)
+tipo de cambio en entrenamiento: 3.006 (ene-2015) a 3.829 (dic-2022); correlación de rangos con el tiempo: 0.812
+tipo de cambio en toda la ventana: mín. 3.01, máx. 4.11
+meses de entrenamiento con texto de memorias: 81; ejercicios distintos: 7
+
+== FIGURA 6: traspasos netos de Integra frente a la brecha ==
+traspasos netos de Integra: 136 meses, ene-2015 a abr-2026, unidad: afiliados
+correlación mensual brecha(t) vs traspaso neto(t+k), k=[0, 3, 6, 9, 12]: Pearson [0.103, 0.044, -0.081, -0.153, -0.044]; Spearman [0.09, 0.083, 0.029, -0.012, 0.018]
+máximo |Pearson| = 0.153; máximo |Spearman| = 0.090
+      brecha_media  traspaso_neto  meses
+2015         -0.72        -1334.0     12
+2016         -0.09        -1274.0     12
+2017          0.13         2291.0     12
+2018         -0.40        11390.0     12
+2019         -0.78        16171.0     12
+2020         -1.62         7289.0     12
+2021          0.29         8398.0     12
+2022          0.74         9722.0     12
+2023          0.27         2254.0     12
+2024         -1.08        -4178.0     12
+2025         -0.01       -25989.0     12
+2026          0.26        -6564.0      4
+afiliados de Integra (tabla analítica): ene-2015 = 2,032,071; abr-2026 = 4,900,802; variación +141.2 %; último dato abr-2026
+traspaso neto acumulado ene-2015 a abr-2026: +18,176 afiliados (0.63 % del aumento de la base)
+traspaso neto de 2025: -25,989 = 0.53 % de los afiliados de dic-2025 (4,910,011)
+años con traspaso neto positivo y brecha media negativa: [2018, 2019, 2020]
