@@ -1,0 +1,644 @@
+{
+  "fecha_ejecucion": "2026-11-19T21:18:36.636924+00:00",
+  "manifiesto": "_manifests/01_manifiesto_ingesta_2026-11-19.jsonl",
+  "libros": [
+    {
+      "archivo_original": "Afiliación y Traspasos (Desde 1993).XLS",
+      "formato_detectado": "xls_legacy_biff",
+      "hojas": [
+        "Afil Activos",
+        "Afiliacion mensual",
+        "Mov Fondo x Traspasos-Ingresos ",
+        "Mov Fondo x Traspasos-Salidas",
+        "Mov Fondo x Traspasos-Neto",
+        "Traspasos Afiliados-Ingresos",
+        "Traspasos Afiliados-Salidas",
+        "Traspasos Afiliados-Neto"
+      ]
+    },
+    {
+      "archivo_original": "Inversiones y Rentabilidad (Desde 1993).XLS",
+      "formato_detectado": "xls_legacy_biff",
+      "hojas": [
+        "Rentabilidad Nominal F2",
+        "Rentabilidad Nominal F0 F1 y F3",
+        "Rentabilidad Real F2",
+        "Rentabilidad Real F0 F1 y F3",
+        "Fondo-Cartera-Encaje",
+        "Cartera por moneda"
+      ]
+    },
+    {
+      "archivo_original": "Valores cuota (Desde 1993).XLS",
+      "formato_detectado": "xlsx_interno_ext_xls",
+      "hojas": [
+        "Valor cuota diario"
+      ]
+    }
+  ],
+  "hojas": [
+    {
+      "libro": "afiliacion_y_traspasos_desde_1993",
+      "hoja": "Afil Activos",
+      "hoja_slug": "afil_activos",
+      "filas_origen": 382,
+      "columnas_origen": 12,
+      "ruta": "s3://afp-integra-silver-672469410615/staging/sbs/afiliacion_y_traspasos_desde_1993/afil_activos.csv"
+    },
+    {
+      "libro": "afiliacion_y_traspasos_desde_1993",
+      "hoja": "Afiliacion mensual",
+      "hoja_slug": "afiliacion_mensual",
+      "filas_origen": 406,
+      "columnas_origen": 12,
+      "ruta": "s3://afp-integra-silver-672469410615/staging/sbs/afiliacion_y_traspasos_desde_1993/afiliacion_mensual.csv"
+    },
+    {
+      "libro": "afiliacion_y_traspasos_desde_1993",
+      "hoja": "Mov Fondo x Traspasos-Ingresos ",
+      "hoja_slug": "mov_fondo_x_traspasos_ingresos",
+      "filas_origen": 347,
+      "columnas_origen": 10,
+      "ruta": "s3://afp-integra-silver-672469410615/staging/sbs/afiliacion_y_traspasos_desde_1993/mov_fondo_x_traspasos_ingresos.csv"
+    },
+    {
+      "libro": "afiliacion_y_traspasos_desde_1993",
+      "hoja": "Mov Fondo x Traspasos-Salidas",
+      "hoja_slug": "mov_fondo_x_traspasos_salidas",
+      "filas_origen": 347,
+      "columnas_origen": 9,
+      "ruta": "s3://afp-integra-silver-672469410615/staging/sbs/afiliacion_y_traspasos_desde_1993/mov_fondo_x_traspasos_salidas.csv"
+    },
+    {
+      "libro": "afiliacion_y_traspasos_desde_1993",
+      "hoja": "Mov Fondo x Traspasos-Neto",
+      "hoja_slug": "mov_fondo_x_traspasos_neto",
+      "filas_origen": 347,
+      "columnas_origen": 9,
+      "ruta": "s3://afp-integra-silver-672469410615/staging/sbs/afiliacion_y_traspasos_desde_1993/mov_fondo_x_traspasos_neto.csv"
+    },
+    {
+      "libro": "afiliacion_y_traspasos_desde_1993",
+      "hoja": "Traspasos Afiliados-Ingresos",
+      "hoja_slug": "traspasos_afiliados_ingresos",
+      "filas_origen": 347,
+      "columnas_origen": 9,
+      "ruta": "s3://afp-integra-silver-672469410615/staging/sbs/afiliacion_y_traspasos_desde_1993/traspasos_afiliados_ingresos.csv"
+    },
+    {
+      "libro": "afiliacion_y_traspasos_desde_1993",
+      "hoja": "Traspasos Afiliados-Salidas",
+      "hoja_slug": "traspasos_afiliados_salidas",
+      "filas_origen": 347,
+      "columnas_origen": 9,
+      "ruta": "s3://afp-integra-silver-672469410615/staging/sbs/afiliacion_y_traspasos_desde_1993/traspasos_afiliados_salidas.csv"
+    },
+    {
+      "libro": "afiliacion_y_traspasos_desde_1993",
+      "hoja": "Traspasos Afiliados-Neto",
+      "hoja_slug": "traspasos_afiliados_neto",
+      "filas_origen": 347,
+      "columnas_origen": 8,
+      "ruta": "s3://afp-integra-silver-672469410615/staging/sbs/afiliacion_y_traspasos_desde_1993/traspasos_afiliados_neto.csv"
+    },
+    {
+      "libro": "inversiones_y_rentabilidad_desde_1993",
+      "hoja": "Rentabilidad Nominal F2",
+      "hoja_slug": "rentabilidad_nominal_f2",
+      "filas_origen": 346,
+      "columnas_origen": 139,
+      "ruta": "s3://afp-integra-silver-672469410615/staging/sbs/inversiones_y_rentabilidad_desde_1993/rentabilidad_nominal_f2.csv"
+    },
+    {
+      "libro": "inversiones_y_rentabilidad_desde_1993",
+      "hoja": "Rentabilidad Nominal F0 F1 y F3",
+      "hoja_slug": "rentabilidad_nominal_f0_f1_y_f3",
+      "filas_origen": 236,
+      "columnas_origen": 23,
+      "ruta": "s3://afp-integra-silver-672469410615/staging/sbs/inversiones_y_rentabilidad_desde_1993/rentabilidad_nominal_f0_f1_y_f3.csv"
+    },
+    {
+      "libro": "inversiones_y_rentabilidad_desde_1993",
+      "hoja": "Rentabilidad Real F2",
+      "hoja_slug": "rentabilidad_real_f2",
+      "filas_origen": 390,
+      "columnas_origen": 139,
+      "ruta": "s3://afp-integra-silver-672469410615/staging/sbs/inversiones_y_rentabilidad_desde_1993/rentabilidad_real_f2.csv"
+    },
+    {
+      "libro": "inversiones_y_rentabilidad_desde_1993",
+      "hoja": "Rentabilidad Real F0 F1 y F3",
+      "hoja_slug": "rentabilidad_real_f0_f1_y_f3",
+      "filas_origen": 236,
+      "columnas_origen": 23,
+      "ruta": "s3://afp-integra-silver-672469410615/staging/sbs/inversiones_y_rentabilidad_desde_1993/rentabilidad_real_f0_f1_y_f3.csv"
+    },
+    {
+      "libro": "inversiones_y_rentabilidad_desde_1993",
+      "hoja": "Fondo-Cartera-Encaje",
+      "hoja_slug": "fondo_cartera_encaje",
+      "filas_origen": 400,
+      "columnas_origen": 4,
+      "ruta": "s3://afp-integra-silver-672469410615/staging/sbs/inversiones_y_rentabilidad_desde_1993/fondo_cartera_encaje.csv"
+    },
+    {
+      "libro": "inversiones_y_rentabilidad_desde_1993",
+      "hoja": "Cartera por moneda",
+      "hoja_slug": "cartera_por_moneda",
+      "filas_origen": 359,
+      "columnas_origen": 55,
+      "ruta": "s3://afp-integra-silver-672469410615/staging/sbs/inversiones_y_rentabilidad_desde_1993/cartera_por_moneda.csv"
+    },
+    {
+      "libro": "valores_cuota_desde_1993",
+      "hoja": "Valor cuota diario",
+      "hoja_slug": "valor_cuota_diario",
+      "filas_origen": 8547,
+      "columnas_origen": 18,
+      "ruta": "s3://afp-integra-silver-672469410615/staging/sbs/valores_cuota_desde_1993/valor_cuota_diario.csv"
+    }
+  ],
+  "documentos": [
+    {
+      "afp": "Habitat",
+      "anio_ejercicio": 2015,
+      "parte": 1,
+      "disponible_desde_regla": "2016-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Habitat/MEOE41322015AIA01.PDF",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/habitat/meoe41322015aia01.txt",
+      "caracteres_extraidos": 85745,
+      "extractor": "pdf"
+    },
+    {
+      "afp": "Habitat",
+      "anio_ejercicio": 2016,
+      "parte": 1,
+      "disponible_desde_regla": "2017-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Habitat/MEOE41322016AIA01.PDF",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/habitat/meoe41322016aia01.txt",
+      "caracteres_extraidos": 116258,
+      "extractor": "pdf"
+    },
+    {
+      "afp": "Habitat",
+      "anio_ejercicio": 2017,
+      "parte": 1,
+      "disponible_desde_regla": "2018-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Habitat/MEOE41322017AIA01.PDF",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/habitat/meoe41322017aia01.txt",
+      "caracteres_extraidos": 120870,
+      "extractor": "pdf"
+    },
+    {
+      "afp": "Habitat",
+      "anio_ejercicio": 2018,
+      "parte": 1,
+      "disponible_desde_regla": "2019-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Habitat/MEOE41322018AIA01.PDF",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/habitat/meoe41322018aia01.txt",
+      "caracteres_extraidos": 110186,
+      "extractor": "pdf"
+    },
+    {
+      "afp": "Habitat",
+      "anio_ejercicio": 2019,
+      "parte": 1,
+      "disponible_desde_regla": "2020-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Habitat/MEOE41322019AIA01.PDF",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/habitat/meoe41322019aia01.txt",
+      "caracteres_extraidos": 132858,
+      "extractor": "pdf"
+    },
+    {
+      "afp": "Habitat",
+      "anio_ejercicio": 2020,
+      "parte": 1,
+      "disponible_desde_regla": "2021-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Habitat/MEOE41322020AIA01.DOCX",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/habitat/meoe41322020aia01.txt",
+      "caracteres_extraidos": 98382,
+      "extractor": "docx"
+    },
+    {
+      "afp": "Habitat",
+      "anio_ejercicio": 2021,
+      "parte": 1,
+      "disponible_desde_regla": "2022-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Habitat/MEOE41322021AIA01.PDF",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/habitat/meoe41322021aia01.txt",
+      "caracteres_extraidos": 144303,
+      "extractor": "pdf"
+    },
+    {
+      "afp": "Habitat",
+      "anio_ejercicio": 2022,
+      "parte": 1,
+      "disponible_desde_regla": "2023-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Habitat/MEOE41322022AIA01.PDF",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/habitat/meoe41322022aia01.txt",
+      "caracteres_extraidos": 143892,
+      "extractor": "pdf"
+    },
+    {
+      "afp": "Habitat",
+      "anio_ejercicio": 2023,
+      "parte": 1,
+      "disponible_desde_regla": "2024-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Habitat/MEOE41322023AIA01.pdf",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/habitat/meoe41322023aia01.txt",
+      "caracteres_extraidos": 145833,
+      "extractor": "pdf"
+    },
+    {
+      "afp": "Habitat",
+      "anio_ejercicio": 2024,
+      "parte": 1,
+      "disponible_desde_regla": "2025-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Habitat/MEOE41322024AIA01.pdf",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/habitat/meoe41322024aia01.txt",
+      "caracteres_extraidos": 127659,
+      "extractor": "pdf"
+    },
+    {
+      "afp": "Habitat",
+      "anio_ejercicio": 2025,
+      "parte": 1,
+      "disponible_desde_regla": "2026-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Habitat/MEOE41322025AIA01.pdf",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/habitat/meoe41322025aia01.txt",
+      "caracteres_extraidos": 110199,
+      "extractor": "pdf"
+    },
+    {
+      "afp": "Integra",
+      "anio_ejercicio": 2015,
+      "parte": 1,
+      "disponible_desde_regla": "2016-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Integra/MEAFP0022015AIA01.DOC",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/integra/meafp0022015aia01.txt",
+      "caracteres_extraidos": 83867,
+      "extractor": "doc"
+    },
+    {
+      "afp": "Integra",
+      "anio_ejercicio": 2015,
+      "parte": 2,
+      "disponible_desde_regla": "2016-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Integra/MEAFP0022015AIA02.DOCX",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/integra/meafp0022015aia02.txt",
+      "caracteres_extraidos": 18515,
+      "extractor": "docx"
+    },
+    {
+      "afp": "Integra",
+      "anio_ejercicio": 2016,
+      "parte": 1,
+      "disponible_desde_regla": "2017-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Integra/MEAFP0022016AIA01.PDF",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/integra/meafp0022016aia01.txt",
+      "caracteres_extraidos": 135312,
+      "extractor": "pdf"
+    },
+    {
+      "afp": "Integra",
+      "anio_ejercicio": 2016,
+      "parte": 2,
+      "disponible_desde_regla": "2017-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Integra/MEAFP0022016AIA02.DOC",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/integra/meafp0022016aia02.txt",
+      "caracteres_extraidos": 10419,
+      "extractor": "doc"
+    },
+    {
+      "afp": "Integra",
+      "anio_ejercicio": 2017,
+      "parte": 1,
+      "disponible_desde_regla": "2018-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Integra/MEAFP0022017AIA01.PDF",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/integra/meafp0022017aia01.txt",
+      "caracteres_extraidos": 87925,
+      "extractor": "pdf"
+    },
+    {
+      "afp": "Integra",
+      "anio_ejercicio": 2018,
+      "parte": 1,
+      "disponible_desde_regla": "2019-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Integra/MEAFP0022018AIA01.PDF",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/integra/meafp0022018aia01.txt",
+      "caracteres_extraidos": 200351,
+      "extractor": "pdf"
+    },
+    {
+      "afp": "Integra",
+      "anio_ejercicio": 2019,
+      "parte": 1,
+      "disponible_desde_regla": "2020-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Integra/MEAFP0022019AIA01.PDF",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/integra/meafp0022019aia01.txt",
+      "caracteres_extraidos": 224254,
+      "extractor": "pdf"
+    },
+    {
+      "afp": "Integra",
+      "anio_ejercicio": 2020,
+      "parte": 1,
+      "disponible_desde_regla": "2021-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Integra/MEAFP0022020AIA01.PDF",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/integra/meafp0022020aia01.txt",
+      "caracteres_extraidos": 239882,
+      "extractor": "pdf"
+    },
+    {
+      "afp": "Integra",
+      "anio_ejercicio": 2021,
+      "parte": 1,
+      "disponible_desde_regla": "2022-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Integra/MEAFP0022021AIA01.PDF",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/integra/meafp0022021aia01.txt",
+      "caracteres_extraidos": 242467,
+      "extractor": "pdf"
+    },
+    {
+      "afp": "Integra",
+      "anio_ejercicio": 2022,
+      "parte": 1,
+      "disponible_desde_regla": "2023-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Integra/MEAFP0022022AIA01.PDF",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/integra/meafp0022022aia01.txt",
+      "caracteres_extraidos": 255600,
+      "extractor": "pdf"
+    },
+    {
+      "afp": "Integra",
+      "anio_ejercicio": 2023,
+      "parte": 1,
+      "disponible_desde_regla": "2024-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Integra/MEAFP0022023AIA01.pdf",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/integra/meafp0022023aia01.txt",
+      "caracteres_extraidos": 274630,
+      "extractor": "pdf"
+    },
+    {
+      "afp": "Integra",
+      "anio_ejercicio": 2024,
+      "parte": 1,
+      "disponible_desde_regla": "2025-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Integra/MEAFP0022024AIA01.pdf",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/integra/meafp0022024aia01.txt",
+      "caracteres_extraidos": 157948,
+      "extractor": "pdf"
+    },
+    {
+      "afp": "Integra",
+      "anio_ejercicio": 2025,
+      "parte": 1,
+      "disponible_desde_regla": "2026-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Integra/MEAFP0022025AIA01.pdf",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/integra/meafp0022025aia01.txt",
+      "caracteres_extraidos": 102443,
+      "extractor": "pdf"
+    },
+    {
+      "afp": "Prima",
+      "anio_ejercicio": 2015,
+      "parte": 1,
+      "disponible_desde_regla": "2016-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Prima/MEOE19282015AIA01.PDF",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/prima/meoe19282015aia01.txt",
+      "caracteres_extraidos": 201520,
+      "extractor": "pdf"
+    },
+    {
+      "afp": "Prima",
+      "anio_ejercicio": 2015,
+      "parte": 2,
+      "disponible_desde_regla": "2016-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Prima/MEOE19282015AIA02.PDF",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/prima/meoe19282015aia02.txt",
+      "caracteres_extraidos": 21363,
+      "extractor": "pdf"
+    },
+    {
+      "afp": "Prima",
+      "anio_ejercicio": 2015,
+      "parte": 3,
+      "disponible_desde_regla": "2016-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Prima/MEOE19282015AIA03.PDF",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/prima/meoe19282015aia03.txt",
+      "caracteres_extraidos": 99591,
+      "extractor": "pdf"
+    },
+    {
+      "afp": "Prima",
+      "anio_ejercicio": 2016,
+      "parte": 1,
+      "disponible_desde_regla": "2017-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Prima/MEOE19282016AIA01.PDF",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/prima/meoe19282016aia01.txt",
+      "caracteres_extraidos": 149201,
+      "extractor": "pdf"
+    },
+    {
+      "afp": "Prima",
+      "anio_ejercicio": 2017,
+      "parte": 1,
+      "disponible_desde_regla": "2018-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Prima/MEOE19282017AIA01.PDF",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/prima/meoe19282017aia01.txt",
+      "caracteres_extraidos": 192012,
+      "extractor": "pdf"
+    },
+    {
+      "afp": "Prima",
+      "anio_ejercicio": 2018,
+      "parte": 1,
+      "disponible_desde_regla": "2019-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Prima/MEOE19282018AIA01.PDF",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/prima/meoe19282018aia01.txt",
+      "caracteres_extraidos": 213880,
+      "extractor": "pdf"
+    },
+    {
+      "afp": "Prima",
+      "anio_ejercicio": 2019,
+      "parte": 1,
+      "disponible_desde_regla": "2020-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Prima/MEOE19282019AIA01.PDF",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/prima/meoe19282019aia01.txt",
+      "caracteres_extraidos": 240452,
+      "extractor": "pdf"
+    },
+    {
+      "afp": "Prima",
+      "anio_ejercicio": 2020,
+      "parte": 1,
+      "disponible_desde_regla": "2021-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Prima/MEOE19282020AIA01.PDF",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/prima/meoe19282020aia01.txt",
+      "caracteres_extraidos": 299261,
+      "extractor": "pdf"
+    },
+    {
+      "afp": "Prima",
+      "anio_ejercicio": 2021,
+      "parte": 1,
+      "disponible_desde_regla": "2022-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Prima/MEOE19282021AIA01.PDF",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/prima/meoe19282021aia01.txt",
+      "caracteres_extraidos": 432126,
+      "extractor": "pdf"
+    },
+    {
+      "afp": "Prima",
+      "anio_ejercicio": 2022,
+      "parte": 1,
+      "disponible_desde_regla": "2023-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Prima/MEOE19282022AIA01.PDF",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/prima/meoe19282022aia01.txt",
+      "caracteres_extraidos": 351435,
+      "extractor": "pdf"
+    },
+    {
+      "afp": "Prima",
+      "anio_ejercicio": 2023,
+      "parte": 1,
+      "disponible_desde_regla": "2024-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Prima/MEOE19282023AIA01.pdf",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/prima/meoe19282023aia01.txt",
+      "caracteres_extraidos": 446947,
+      "extractor": "pdf"
+    },
+    {
+      "afp": "Prima",
+      "anio_ejercicio": 2024,
+      "parte": 1,
+      "disponible_desde_regla": "2025-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Prima/MEOE19282024AIA01.pdf",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/prima/meoe19282024aia01.txt",
+      "caracteres_extraidos": 337125,
+      "extractor": "pdf"
+    },
+    {
+      "afp": "Prima",
+      "anio_ejercicio": 2025,
+      "parte": 1,
+      "disponible_desde_regla": "2026-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Prima/MEOE19282025AIA01.pdf",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/prima/meoe19282025aia01.txt",
+      "caracteres_extraidos": 305390,
+      "extractor": "pdf"
+    },
+    {
+      "afp": "Profuturo",
+      "anio_ejercicio": 2016,
+      "parte": 1,
+      "disponible_desde_regla": "2017-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Profuturo/MEAFP0042016AIA01.PDF",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/profuturo/meafp0042016aia01.txt",
+      "caracteres_extraidos": 122366,
+      "extractor": "pdf"
+    },
+    {
+      "afp": "Profuturo",
+      "anio_ejercicio": 2023,
+      "parte": 1,
+      "disponible_desde_regla": "2024-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Profuturo/MEAFP0042023AIA01.pdf",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/profuturo/meafp0042023aia01.txt",
+      "caracteres_extraidos": 112991,
+      "extractor": "pdf"
+    },
+    {
+      "afp": "Profuturo",
+      "anio_ejercicio": 2015,
+      "parte": 1,
+      "disponible_desde_regla": "2016-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Profuturo/MEMORIA322015.pdf",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/profuturo/memoria322015.txt",
+      "caracteres_extraidos": 115740,
+      "extractor": "pdf"
+    },
+    {
+      "afp": "Profuturo",
+      "anio_ejercicio": 2017,
+      "parte": 1,
+      "disponible_desde_regla": "2018-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Profuturo/MEMORIA32ANUAL322017324532PROFUTURO32AFP.pdf",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/profuturo/memoria32anual322017324532profuturo32afp.txt",
+      "caracteres_extraidos": 116366,
+      "extractor": "pdf"
+    },
+    {
+      "afp": "Profuturo",
+      "anio_ejercicio": 2018,
+      "parte": 1,
+      "disponible_desde_regla": "2019-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Profuturo/MEMORIA32ANUAL322018.pdf",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/profuturo/memoria32anual322018.txt",
+      "caracteres_extraidos": 97829,
+      "extractor": "pdf"
+    },
+    {
+      "afp": "Profuturo",
+      "anio_ejercicio": 2019,
+      "parte": 1,
+      "disponible_desde_regla": "2020-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Profuturo/MEMORIA32PROFUTURO322019.pdf",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/profuturo/memoria32profuturo322019.txt",
+      "caracteres_extraidos": 91087,
+      "extractor": "pdf"
+    },
+    {
+      "afp": "Profuturo",
+      "anio_ejercicio": 2020,
+      "parte": 1,
+      "disponible_desde_regla": "2021-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Profuturo/MEMORIA32PROFUTURO322020.pdf",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/profuturo/memoria32profuturo322020.txt",
+      "caracteres_extraidos": 169983,
+      "extractor": "pdf"
+    },
+    {
+      "afp": "Profuturo",
+      "anio_ejercicio": 2022,
+      "parte": 1,
+      "disponible_desde_regla": "2023-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Profuturo/MEMORIA32PROFUTURO322022.PDF",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/profuturo/memoria32profuturo322022.txt",
+      "caracteres_extraidos": 143299,
+      "extractor": "pdf"
+    },
+    {
+      "afp": "Profuturo",
+      "anio_ejercicio": 2024,
+      "parte": 1,
+      "disponible_desde_regla": "2025-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Profuturo/MEMORIA32PROFUTURO322024.pdf",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/profuturo/memoria32profuturo322024.txt",
+      "caracteres_extraidos": 130031,
+      "extractor": "pdf"
+    },
+    {
+      "afp": "Profuturo",
+      "anio_ejercicio": 2025,
+      "parte": 1,
+      "disponible_desde_regla": "2026-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Profuturo/MEMORIA32PROFUTURO322025.pdf",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/profuturo/memoria32profuturo322025.txt",
+      "caracteres_extraidos": 130761,
+      "extractor": "pdf"
+    },
+    {
+      "afp": "Profuturo",
+      "anio_ejercicio": 2021,
+      "parte": 1,
+      "disponible_desde_regla": "2022-04-01",
+      "archivo_original": "Datos No estructurados/Memoria Profuturo/MEMORIAPROFUTURO1702VF4502.pdf",
+      "ruta": "s3://afp-integra-silver-672469410615/staging/documentos/profuturo/memoriaprofuturo1702vf4502.txt",
+      "caracteres_extraidos": 130608,
+      "extractor": "pdf"
+    }
+  ],
+  "errores": []
+}
