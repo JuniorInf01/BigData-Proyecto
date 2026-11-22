@@ -1,0 +1,81 @@
+== PARTICIÓN CRONOLÓGICA ==
+meses con etiqueta: 139 (ene-2015 a jul-2026); sin etiqueta: 1 (ago-2026)
+entrenamiento: ene-2015 a dic-2022, 96 meses, 50 positivos (52.1 %)
+prueba: ene-2023 a jul-2026, 43 meses, 22 positivos (51.2 %), 21 negativos
+variables prohibidas (no entran): ['anio', 'brecha_mensual_siguiente_pp', 'objetivo_bajo_rendimiento_mes_siguiente']
+Inercia (brecha t, t−1, t−3) -> ['brecha_mensual_pp', 'brecha_mensual_lag1', 'brecha_mensual_lag3']
+Contexto (IPC, tipo de cambio, sistema) -> ['ipc_lag1', 'tipo_cambio_lag1', 'var_tc_12m_pct_lag1', 'sistema_lag1']
+Inercia + contexto (modelo base) -> ['brecha_mensual_pp', 'brecha_mensual_lag1', 'brecha_mensual_lag3', 'ipc_lag1', 'tipo_cambio_lag1', 'var_tc_12m_pct_lag1', 'sistema_lag1']
+filas de entrenamiento usadas por modelo (se descartan las sin rezago disponible): Inercia (brecha t, t−1, t−3): 96, Contexto (IPC, tipo de cambio, sistema): 95, Inercia + contexto (modelo base): 95
+modelo: estandarización (media y desv. del entrenamiento) + regresión logística L2, C = 1.0; umbral 0.50
+
+== MÉTRICAS EN PRUEBA ==
+Clase mayoritaria del entrenamiento                  AUC entren. 0.500 | AUC prueba 0.500 | exactitud 0.512 | exact. balanceada 0.500 | precisión 0.512 | recall 1.000 | F1 0.677 | TN 0 FP 21 FN 0 TP 22
+Regla de persistencia (signo de la brecha actual)    AUC entren. 0.466 | AUC prueba 0.463 | exactitud 0.488 | exact. balanceada 0.488 | precisión 0.500 | recall 0.500 | F1 0.500 | TN 10 FP 11 FN 11 TP 11
+Inercia (brecha t, t−1, t−3)                         AUC entren. 0.534 | AUC prueba 0.314 | exactitud 0.419 | exact. balanceada 0.411 | precisión 0.457 | recall 0.727 | F1 0.561 | TN 2 FP 19 FN 6 TP 16 | Brier 0.259
+Contexto (IPC, tipo de cambio, sistema)              AUC entren. 0.665 | AUC prueba 0.517 | exactitud 0.512 | exact. balanceada 0.508 | precisión 0.517 | recall 0.682 | F1 0.588 | TN 7 FP 14 FN 7 TP 15 | Brier 0.277
+Inercia + contexto (modelo base)                     AUC entren. 0.677 | AUC prueba 0.487 | exactitud 0.512 | exact. balanceada 0.508 | precisión 0.517 | recall 0.682 | F1 0.588 | TN 7 FP 14 FN 7 TP 15 | Brier 0.284
+
+== INTERVALOS (bootstrap de bloques de 6 meses, 2000 réplicas, 95 %) ==
+AUC en prueba Clase mayoritaria del entrenamiento                  0.500  [0.500 a 0.500]
+AUC en prueba Regla de persistencia (signo de la brecha actual)    0.463  [0.335 a 0.649]
+AUC en prueba Inercia (brecha t, t−1, t−3)                         0.314  [0.224 a 0.430]
+AUC en prueba Contexto (IPC, tipo de cambio, sistema)              0.517  [0.415 a 0.713]
+AUC en prueba Inercia + contexto (modelo base)                     0.487  [0.387 a 0.680]
+AUC(Inercia (brecha t, t−1, t−3)) − AUC(persistencia): -0.149 [-0.355 a -0.013]; réplicas con diferencia > 0: 1.6 %
+AUC(Contexto (IPC, tipo de cambio, sistema)) − AUC(persistencia): +0.054 [-0.055 a +0.193]; réplicas con diferencia > 0: 89.4 %
+AUC(Inercia + contexto (modelo base)) − AUC(persistencia): +0.024 [-0.142 a +0.188]; réplicas con diferencia > 0: 72.2 %
+probabilidad (réplicas) de que el AUC del modelo base supere 0.70: 1.3 %
+
+== COEFICIENTES DEL MODELO BASE (variables estandarizadas; log-odds de 'bajo rendimiento') ==
+sistema_lag1           -0.546
+ipc_lag1               -0.230
+var_tc_12m_pct_lag1    -0.118
+brecha_mensual_pp      +0.096
+brecha_mensual_lag3    -0.092
+tipo_cambio_lag1       -0.082
+brecha_mensual_lag1    -0.011
+intercepto +0.065
+
+== VALIDACIÓN DE AVANCE TEMPORAL (reajuste cada mes con los meses cuya etiqueta ya se conocía) ==
+Inercia (brecha t, t−1, t−3)                         AUC 0.387 | exactitud 0.512 | precisión 0.517 | recall 0.682
+Contexto (IPC, tipo de cambio, sistema)              AUC 0.463 | exactitud 0.442 | precisión 0.458 | recall 0.500
+Inercia + contexto (modelo base)                     AUC 0.468 | exactitud 0.488 | precisión 0.500 | recall 0.636
+(la regla de persistencia no se reajusta: AUC 0.463)
+
+== SENSIBILIDAD AL CORTE (AUC en prueba) ==
+corte      n_train    n_prueba   persistencia   modelo base  contexto solo     
+dic-2021   84         55         0.410          0.557        0.521             
+jun-2022   90         49         0.428          0.517        0.542             
+dic-2022   96         43         0.463          0.487        0.517             
+jun-2023   102        37         0.485          0.515        0.494             
+
+== ERRORES DEL MODELO BASE EN PRUEBA (umbral 0.50) ==
+ene-2023: brecha(t) -0.20 -> brecha(t+1) +0.53; etiqueta 0, predicho 1 (p = 0.74)
+mar-2023: brecha(t) -0.24 -> brecha(t+1) +0.05; etiqueta 0, predicho 1 (p = 0.75)
+abr-2023: brecha(t) +0.05 -> brecha(t+1) +0.18; etiqueta 0, predicho 1 (p = 0.62)
+jul-2023: brecha(t) -0.40 -> brecha(t+1) +0.04; etiqueta 0, predicho 1 (p = 0.65)
+ago-2023: brecha(t) +0.04 -> brecha(t+1) +0.09; etiqueta 0, predicho 1 (p = 0.60)
+feb-2024: brecha(t) +0.03 -> brecha(t+1) +0.07; etiqueta 0, predicho 1 (p = 0.57)
+mar-2024: brecha(t) +0.07 -> brecha(t+1) -0.63; etiqueta 1, predicho 0 (p = 0.43)
+may-2024: brecha(t) +0.33 -> brecha(t+1) +0.08; etiqueta 0, predicho 1 (p = 0.57)
+jul-2024: brecha(t) +0.53 -> brecha(t+1) +0.71; etiqueta 0, predicho 1 (p = 0.55)
+sep-2024: brecha(t) -0.11 -> brecha(t+1) -0.19; etiqueta 1, predicho 0 (p = 0.47)
+dic-2024: brecha(t) +0.25 -> brecha(t+1) +0.54; etiqueta 0, predicho 1 (p = 0.51)
+abr-2025: brecha(t) -0.82 -> brecha(t+1) -0.24; etiqueta 1, predicho 0 (p = 0.42)
+may-2025: brecha(t) -0.24 -> brecha(t+1) +0.20; etiqueta 0, predicho 1 (p = 0.60)
+jun-2025: brecha(t) +0.20 -> brecha(t+1) +0.13; etiqueta 0, predicho 1 (p = 0.69)
+ago-2025: brecha(t) -0.14 -> brecha(t+1) +0.00; etiqueta 0, predicho 1 (p = 0.58)
+nov-2025: brecha(t) -0.24 -> brecha(t+1) +0.69; etiqueta 0, predicho 1 (p = 0.61)
+dic-2025: brecha(t) +0.69 -> brecha(t+1) +1.50; etiqueta 0, predicho 1 (p = 0.65)
+mar-2026: brecha(t) +0.32 -> brecha(t+1) -0.09; etiqueta 1, predicho 0 (p = 0.23)
+abr-2026: brecha(t) -0.09 -> brecha(t+1) -0.39; etiqueta 1, predicho 0 (p = 0.09)
+jun-2026: brecha(t) +0.05 -> brecha(t+1) -0.15; etiqueta 1, predicho 0 (p = 0.32)
+jul-2026: brecha(t) -0.15 -> brecha(t+1) -0.05; etiqueta 1, predicho 0 (p = 0.29)
+meses de prueba con cambio de signo entre t y t+1: 22; de ellos el modelo base acierta 13
+persistencia: errores en prueba 22, todos cambios de signo por definición
+
+== PREDICCIÓN PARA EL MES SIN ETIQUETA (modelo base reentrenado con los 139 meses etiquetados) ==
+ago-2026 -> probabilidad de bajo rendimiento el mes siguiente: 0.39 (sin señal demostrada en prueba: usar solo como ilustración)
+
+versiones: pandas 1.4.2, numpy 1.23.4, scikit-learn 1.0.2
