@@ -1,0 +1,55 @@
+== DATOS ==
+entrenamiento: ene-2015 a dic-2022, 96 meses | prueba: ene-2023 a jul-2026, 43 meses
+meses de entrenamiento sin memoria publicada (freq_* nulas, imputadas con la mediana): 15
+validación cruzada: TimeSeriesSplit de 5 pliegues dentro del entrenamiento; métrica AUC
+
+== AJUSTE DE HIPERPARÁMETROS Y RESULTADOS (selección por AUC de validación cruzada) ==
+Regresión logística L2   Contexto                     CV AUC 0.620 | hiperparámetros {'clf__C': 10.0} | AUC prueba 0.526 | Brier 0.278
+Regresión logística L2   Inercia + contexto           CV AUC 0.610 | hiperparámetros {'clf__C': 1.0} | AUC prueba 0.498 | Brier 0.282
+Regresión logística L2   Contexto + texto             CV AUC 0.623 | hiperparámetros {'clf__C': 10.0} | AUC prueba 0.468 | Brier 0.360
+Regresión logística L2   Inercia + contexto + texto   CV AUC 0.595 | hiperparámetros {'clf__C': 1.0} | AUC prueba 0.513 | Brier 0.327
+Bosque aleatorio         Contexto                     CV AUC 0.557 | hiperparámetros {'clf__max_depth': 2, 'clf__min_samples_leaf': 10} | AUC prueba 0.478 | Brier 0.273
+Bosque aleatorio         Inercia + contexto           CV AUC 0.539 | hiperparámetros {'clf__max_depth': 2, 'clf__min_samples_leaf': 10} | AUC prueba 0.439 | Brier 0.266
+Bosque aleatorio         Contexto + texto             CV AUC 0.581 | hiperparámetros {'clf__max_depth': 2, 'clf__min_samples_leaf': 10} | AUC prueba 0.548 | Brier 0.261
+Bosque aleatorio         Inercia + contexto + texto   CV AUC 0.541 | hiperparámetros {'clf__max_depth': 3, 'clf__min_samples_leaf': 10} | AUC prueba 0.442 | Brier 0.261
+Regla de persistencia    signo brecha actual                                                | AUC prueba 0.463
+
+== MODELO DEFINITIVO (mayor AUC de validación cruzada) ==
+Regresión logística L2 · Contexto + texto · {'clf__C': 10.0}
+AUC prueba 0.468 [IC95 0.348 a 0.687] | bacc 0.439 | precisión 0.462 | recall 0.545 | F1 0.500 | TN 7 FP 14 FN 10 TP 12 | Brier 0.360
+probabilidad (réplicas bootstrap) de que el AUC supere 0.70: 1.9 %
+
+== ¿EL TEXTO DE LAS MEMORIAS MEJORA EL AUC EN PRUEBA? (misma familia y mismos hiperparámetros elegidos por CV) ==
+Regresión logística L2   Contexto             -> Contexto + texto             ΔAUC -0.058 [IC95 -0.241 a +0.107]
+Regresión logística L2   Inercia + contexto   -> Inercia + contexto + texto   ΔAUC +0.015 [IC95 -0.167 a +0.189]
+Bosque aleatorio         Contexto             -> Contexto + texto             ΔAUC +0.069 [IC95 -0.021 a +0.187]
+Bosque aleatorio         Inercia + contexto   -> Inercia + contexto + texto   ΔAUC +0.002 [IC95 -0.039 a +0.064]
+
+== INFLACIÓN FRENTE A TIPO DE CAMBIO ==
+Coeficientes estandarizados (logística, inercia + contexto; log-odds de bajo rendimiento):
+  sistema_lag1           -0.554
+  ipc_lag1               -0.222
+  tipo_cambio_lag1       -0.135
+  var_tc_12m_pct_lag1    -0.101
+  brecha_mensual_pp      +0.099
+  brecha_mensual_lag3    -0.082
+  brecha_mensual_lag1    -0.001
+Importancia por permutación en prueba del modelo definitivo (caída de AUC al desordenar la variable):
+  freq_volatilidad         +0.021 ± 0.028
+  freq_inflacion           +0.014 ± 0.048
+  sistema_lag1             +0.010 ± 0.057
+  freq_tasa_interes        +0.002 ± 0.020
+  ipc_lag1                 +0.000 ± 0.000
+  freq_alternativos        +0.000 ± 0.000
+  freq_sostenibilidad_esg  -0.001 ± 0.011
+  freq_tipo_cambio         -0.005 ± 0.010
+  tipo_cambio_lag1         -0.005 ± 0.006
+  var_tc_12m_pct_lag1      -0.008 ± 0.012
+  freq_exterior            -0.009 ± 0.013
+  freq_traspasos           -0.009 ± 0.039
+  freq_pandemia_covid      -0.010 ± 0.013
+  freq_comisiones          -0.016 ± 0.039
+  freq_retiros             -0.019 ± 0.079
+  freq_renta_variable      -0.033 ± 0.045
+
+versiones: pandas 1.4.2, numpy 1.23.4, scikit-learn 1.0.2
