@@ -36,6 +36,8 @@ El repositorio tiene dos versiones del mismo pipeline:
 | Dataset del modelo | Amazon Athena | `afp_gold.dataset_modelo_mensual` | `cloud/04_gold/afp_gold_dataset_modelo.sh` |
 | Modelo | AWS Glue Python Shell | job `afp-04-modelo` | `cloud/05_modelo/afp_modelo_job.py` |
 | Consumo BI | Amazon Athena | `afp_gold.v_rendimiento`, `afp_gold.predicciones_modelo` | `cloud/04_gold/afp_gold_vistas_dashboard.sh` |
+| Modelo definitivo | AWS Glue Python Shell | job `afp-06-modelo-definitivo` | `cloud/05_modelo/afp_modelo_definitivo_job.py` |
+| Mediciones (broadcast y escalabilidad) | AWS Glue Spark 5.0 | job `afp-05-benchmark` | `cloud/06_benchmark/afp_benchmark_job.py` |
 | Dashboard | Power BI Desktop + driver ODBC 2.x de Athena | `dashboard/dashboard_afp_integra.pbix` | — |
 
 Seguridad: rol `AWSGlueServiceRole-afp` (solo los 3 buckets del proyecto), usuario `powerbi-athena`
@@ -135,6 +137,39 @@ salida `s3://afp-integra-gold-672469410615/_athena/`, autenticación IAM con el 
 `powerbi-athena`) y conectar con *Obtener datos → Amazon Athena* en modo **Importar**.
 Las claves de acceso nunca se suben al repositorio.
 
+### 7. Modelo definitivo (Glue Python Shell)
+Compara regresión logística y bosque aleatorio, con y sin las variables del texto de las memorias; ajusta hiperparámetros
+con validación cruzada temporal (solo entrenamiento) y elige el modelo sin mirar la prueba.
+```bash
+aws s3 cp cloud/05_modelo/afp_modelo_definitivo_job.py s3://afp-integra-gold-$ACC/scripts/
+aws glue create-job --name afp-06-modelo-definitivo --role AWSGlueServiceRole-afp \
+  --command Name=pythonshell,PythonVersion=3.9,ScriptLocation=s3://afp-integra-gold-$ACC/scripts/afp_modelo_definitivo_job.py \
+  --max-capacity 1 --timeout 30 \
+  --default-arguments '{"--GOLD":"afp-integra-gold-'$ACC'","library-set":"analytics"}'
+aws glue start-job-run --job-name afp-06-modelo-definitivo
+```
+Resultado esperado: modelo elegido = logística L2 con contexto + texto (C = 10), AUC en prueba 0.468
+(`resultados/cloud/cifras_modelo_definitivo.txt`).
+
+### 8. Mediciones de rendimiento y escalabilidad (Glue Spark)
+Broadcast join con 3 corridas de calentamiento y 15 medidas por estrategia (1x, 10x, 100x) y escalabilidad desde el CSV
+crudo de staging hasta 3000x, con punto de quiebre.
+```bash
+aws s3 cp cloud/06_benchmark/afp_benchmark_job.py s3://afp-integra-silver-$ACC/scripts/
+aws glue create-job --name afp-05-benchmark --role AWSGlueServiceRole-afp \
+  --glue-version 5.0 --worker-type G.1X --number-of-workers 2 --timeout 90 \
+  --command Name=glueetl,PythonVersion=3,ScriptLocation=s3://afp-integra-silver-$ACC/scripts/afp_benchmark_job.py \
+  --default-arguments '{"--SILVER":"afp-integra-silver-'$ACC'","--enable-spark-ui":"true","--spark-event-logs-path":"s3://afp-integra-silver-'$ACC'/benchmark/sparkui/"}'
+aws glue start-job-run --job-name afp-05-benchmark
+# memoria del executor por escala, desde los event logs de Spark:
+python3 cloud/06_benchmark/afp_benchmark_memoria.py afp-integra-silver-$ACC
+# borrar las réplicas al terminar para no pagar almacenamiento:
+aws s3 rm s3://afp-integra-silver-$ACC/benchmark/escalabilidad/ --recursive
+```
+Resultado esperado (≈ 25 min): broadcast 31.7 % (1x) a 54.0 % (100x) más rápido; escalabilidad sin errores hasta
+228 millones de filas, con spill a disco desde 1000x (`resultados/cloud/17_benchmark_nube.json`,
+`resultados/cloud/benchmark_memoria_executor.txt`).
+
 ## Cambio del objetivo del modelo (respecto del hito parcial)
 
 En el parcial la etiqueta usaba la rentabilidad real **a 12 meses móviles**: la brecha de un mes y la
@@ -154,7 +189,7 @@ Resultados en prueba (ene-2023 a jul-2026, 43 meses), misma metodología del par
 | Solo contexto | 0,517 |
 | Modelo base (inercia + contexto) | 0,487 |
 
-Con el objetivo corregido, ningún modelo supera al azar: no hay evidencia de que estas variables
+El modelo definitivo (logística con contexto + texto, elegido por validación cruzada) obtuvo 0,468. Con el objetivo corregido, ningún modelo supera al azar: no hay evidencia de que estas variables
 anticipen el bajo rendimiento mensual de Integra.
 
 ## Costos
